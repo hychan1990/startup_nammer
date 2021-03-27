@@ -17,9 +17,23 @@ class MyApp extends StatelessWidget {
           title: new Text('Welcome to Flutter title in appBar'),
         ),
         body: new Center(
-          child: new Text('Hello World222'),
+          child: new RandomWords(), //i new a RandomWords but it have no constructor, why would it auto called createState()?
         ),
       ),
     );
+  }
+}
+
+
+class RandomWords extends StatefulWidget {
+  @override
+  _RandomWordsState createState() => _RandomWordsState();
+}
+
+class _RandomWordsState extends State<RandomWords> {
+  @override
+  Widget build(BuildContext context) {
+    final wordPair = WordPair.random();
+    return Text(wordPair.asPascalCase);
   }
 }
